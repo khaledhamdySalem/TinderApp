@@ -9,9 +9,16 @@ import UIKit
 
 class HomeTopStackView: UIStackView {
     
-    private let settingButton = UIButton(type: .system)
     private let fireButton = UIImageView(image: #imageLiteral(resourceName: "fire"))
     private let messageButton = UIButton(type: .system)
+    
+    private let settingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(didTapOnSettinButton), for: .touchUpInside)
+        return button
+    }()
+    
+    var didTapOnSettingButtonClousre: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +44,10 @@ class HomeTopStackView: UIStackView {
         isLayoutMarginsRelativeArrangement = true
         layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
         
+    }
+    
+    @objc func didTapOnSettinButton() {
+        didTapOnSettingButtonClousre?()
     }
     
     required init(coder: NSCoder) {

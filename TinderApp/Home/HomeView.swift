@@ -13,6 +13,8 @@ class HomeView: UIView {
     var cardsDickView = UIView()
     let bottomStackView = HomeBottomStackView()
     
+    var didTapOnSettingButton: (() -> ())?
+    
     var cardViewModels: [CardViewModel] = {
         let producer: [ProducesCardViewModel] =
         [
@@ -31,6 +33,7 @@ class HomeView: UIView {
         configureView()
         addConstraints()
         setCardView()
+        handleTapOnSettingButton()
     }
     
     private func configureView() {
@@ -52,6 +55,12 @@ class HomeView: UIView {
             overAllStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             overAllStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func handleTapOnSettingButton() {
+        topStackView.didTapOnSettingButtonClousre = { [weak self] in
+            self?.didTapOnSettingButton?()
+        }
     }
     
     // MARK: - Setup CardView

@@ -21,6 +21,9 @@
 		EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */; };
 		EAC5D07229A22F5F005320C5 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07129A22F5F005320C5 /* Advertiser.swift */; };
 		EAC5D07529A27AA2005320C5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */; };
+		EAC5D07929A27DF5005320C5 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07829A27DF5005320C5 /* RegistrationView.swift */; };
+		EAC5D07B29A27E13005320C5 /* RegistrationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07A29A27E13005320C5 /* RegistrationViewViewModel.swift */; };
+		EAC5D07D29A29E35005320C5 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07C29A29E35005320C5 /* UITextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		EAC5D07129A22F5F005320C5 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		EAC5D07829A27DF5005320C5 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		EAC5D07A29A27E13005320C5 /* RegistrationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewViewModel.swift; sourceTree = "<group>"; };
+		EAC5D07C29A29E35005320C5 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */,
+				EAC5D07C29A29E35005320C5 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -143,8 +150,26 @@
 			isa = PBXGroup;
 			children = (
 				EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */,
+				EAC5D07629A27AD9005320C5 /* View */,
+				EAC5D07729A27ADD005320C5 /* ViewModel */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		EAC5D07629A27AD9005320C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D07829A27DF5005320C5 /* RegistrationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EAC5D07729A27ADD005320C5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D07A29A27E13005320C5 /* RegistrationViewViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,11 +242,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC5D07D29A29E35005320C5 /* UITextField+Extension.swift in Sources */,
 				EAC5D06629A10951005320C5 /* CardView.swift in Sources */,
 				EAC5D04B29A0DE72005320C5 /* HomeViewController.swift in Sources */,
 				EAC5D07229A22F5F005320C5 /* Advertiser.swift in Sources */,
+				EAC5D07929A27DF5005320C5 /* RegistrationView.swift in Sources */,
 				EAC5D04729A0DE72005320C5 /* AppDelegate.swift in Sources */,
 				EAC5D06C29A216B2005320C5 /* UIView+Extension.swift in Sources */,
+				EAC5D07B29A27E13005320C5 /* RegistrationViewViewModel.swift in Sources */,
 				EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */,
 				EAC5D07529A27AA2005320C5 /* RegistrationViewController.swift in Sources */,
 				EAC5D05F29A0ED75005320C5 /* HomeTopStackView.swift in Sources */,

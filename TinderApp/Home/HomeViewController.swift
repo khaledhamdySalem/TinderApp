@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     private func configureView() {
         view.backgroundColor = .systemBackground
         view.addSubview(homeView)
+        tapOnSettingButton()
     }
     
     private func addConstraints() {
@@ -31,5 +32,14 @@ class HomeViewController: UIViewController {
             homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    // MARK: - Actions
+    private func tapOnSettingButton() {
+        homeView.didTapOnSettingButton = { [weak self] in
+            let vc = RegistrationViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }
     }
 }
