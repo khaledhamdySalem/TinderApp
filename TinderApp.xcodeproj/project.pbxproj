@@ -9,21 +9,35 @@
 /* Begin PBXBuildFile section */
 		EAC5D04729A0DE72005320C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D04629A0DE72005320C5 /* AppDelegate.swift */; };
 		EAC5D04929A0DE72005320C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D04829A0DE72005320C5 /* SceneDelegate.swift */; };
-		EAC5D04B29A0DE72005320C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D04A29A0DE72005320C5 /* ViewController.swift */; };
-		EAC5D04E29A0DE72005320C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC5D04C29A0DE72005320C5 /* Main.storyboard */; };
+		EAC5D04B29A0DE72005320C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D04A29A0DE72005320C5 /* HomeViewController.swift */; };
 		EAC5D05029A0DE74005320C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC5D04F29A0DE74005320C5 /* Assets.xcassets */; };
 		EAC5D05329A0DE74005320C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC5D05129A0DE74005320C5 /* LaunchScreen.storyboard */; };
+		EAC5D05D29A0EB67005320C5 /* HomeBottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D05C29A0EB67005320C5 /* HomeBottomStackView.swift */; };
+		EAC5D05F29A0ED75005320C5 /* HomeTopStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D05E29A0ED75005320C5 /* HomeTopStackView.swift */; };
+		EAC5D06129A0EDF0005320C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06029A0EDF0005320C5 /* HomeView.swift */; };
+		EAC5D06629A10951005320C5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06529A10951005320C5 /* CardView.swift */; };
+		EAC5D06929A21277005320C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06829A21277005320C5 /* User.swift */; };
+		EAC5D06C29A216B2005320C5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */; };
+		EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */; };
+		EAC5D07229A22F5F005320C5 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07129A22F5F005320C5 /* Advertiser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EAC5D04329A0DE72005320C5 /* TinderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAC5D04629A0DE72005320C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC5D04829A0DE72005320C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EAC5D04A29A0DE72005320C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EAC5D04D29A0DE72005320C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAC5D04A29A0DE72005320C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EAC5D04F29A0DE74005320C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC5D05229A0DE74005320C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAC5D05429A0DE74005320C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC5D05C29A0EB67005320C5 /* HomeBottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomStackView.swift; sourceTree = "<group>"; };
+		EAC5D05E29A0ED75005320C5 /* HomeTopStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopStackView.swift; sourceTree = "<group>"; };
+		EAC5D06029A0EDF0005320C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EAC5D06529A10951005320C5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		EAC5D06829A21277005320C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		EAC5D07129A22F5F005320C5 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,78 @@
 		EAC5D04529A0DE72005320C5 /* TinderApp */ = {
 			isa = PBXGroup;
 			children = (
-				EAC5D04629A0DE72005320C5 /* AppDelegate.swift */,
-				EAC5D04829A0DE72005320C5 /* SceneDelegate.swift */,
-				EAC5D04A29A0DE72005320C5 /* ViewController.swift */,
-				EAC5D04C29A0DE72005320C5 /* Main.storyboard */,
-				EAC5D04F29A0DE74005320C5 /* Assets.xcassets */,
-				EAC5D05129A0DE74005320C5 /* LaunchScreen.storyboard */,
+				EAC5D06D29A21CC0005320C5 /* New Group */,
 				EAC5D05429A0DE74005320C5 /* Info.plist */,
+				EAC5D06A29A216A6005320C5 /* Extension */,
+				EAC5D06229A0FB25005320C5 /* Supporting Files */,
+				EAC5D06329A0FB4D005320C5 /* Home */,
 			);
 			path = TinderApp;
+			sourceTree = "<group>";
+		};
+		EAC5D05B29A0EB59005320C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D05E29A0ED75005320C5 /* HomeTopStackView.swift */,
+				EAC5D05C29A0EB67005320C5 /* HomeBottomStackView.swift */,
+				EAC5D06529A10951005320C5 /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EAC5D06229A0FB25005320C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D04629A0DE72005320C5 /* AppDelegate.swift */,
+				EAC5D04829A0DE72005320C5 /* SceneDelegate.swift */,
+				EAC5D04F29A0DE74005320C5 /* Assets.xcassets */,
+				EAC5D05129A0DE74005320C5 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAC5D06329A0FB4D005320C5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D04A29A0DE72005320C5 /* HomeViewController.swift */,
+				EAC5D06029A0EDF0005320C5 /* HomeView.swift */,
+				EAC5D05B29A0EB59005320C5 /* Views */,
+				EAC5D06729A21151005320C5 /* Model */,
+				EAC5D06E29A21CCB005320C5 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EAC5D06729A21151005320C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D06829A21277005320C5 /* User.swift */,
+				EAC5D07129A22F5F005320C5 /* Advertiser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EAC5D06A29A216A6005320C5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EAC5D06D29A21CC0005320C5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		EAC5D06E29A21CCB005320C5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +204,6 @@
 			files = (
 				EAC5D05329A0DE74005320C5 /* LaunchScreen.storyboard in Resources */,
 				EAC5D05029A0DE74005320C5 /* Assets.xcassets in Resources */,
-				EAC5D04E29A0DE72005320C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +214,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAC5D04B29A0DE72005320C5 /* ViewController.swift in Sources */,
+				EAC5D06629A10951005320C5 /* CardView.swift in Sources */,
+				EAC5D04B29A0DE72005320C5 /* HomeViewController.swift in Sources */,
+				EAC5D07229A22F5F005320C5 /* Advertiser.swift in Sources */,
 				EAC5D04729A0DE72005320C5 /* AppDelegate.swift in Sources */,
+				EAC5D06C29A216B2005320C5 /* UIView+Extension.swift in Sources */,
+				EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */,
+				EAC5D05F29A0ED75005320C5 /* HomeTopStackView.swift in Sources */,
+				EAC5D06929A21277005320C5 /* User.swift in Sources */,
 				EAC5D04929A0DE72005320C5 /* SceneDelegate.swift in Sources */,
+				EAC5D06129A0EDF0005320C5 /* HomeView.swift in Sources */,
+				EAC5D05D29A0EB67005320C5 /* HomeBottomStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EAC5D04C29A0DE72005320C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EAC5D04D29A0DE72005320C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EAC5D05129A0DE74005320C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +368,6 @@
 				INFOPLIST_FILE = TinderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +395,6 @@
 				INFOPLIST_FILE = TinderApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
