@@ -70,7 +70,6 @@
 		EAC5D04529A0DE72005320C5 /* TinderApp */ = {
 			isa = PBXGroup;
 			children = (
-				EAC5D06D29A21CC0005320C5 /* New Group */,
 				EAC5D05429A0DE74005320C5 /* Info.plist */,
 				EAC5D06A29A216A6005320C5 /* Extension */,
 				EAC5D06229A0FB25005320C5 /* Supporting Files */,
@@ -127,13 +126,6 @@
 				EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		EAC5D06D29A21CC0005320C5 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EAC5D06E29A21CCB005320C5 /* ViewModel */ = {
