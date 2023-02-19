@@ -9,7 +9,8 @@ import UIKit
 
 struct User: ProducesCardViewModel {
    
-    let name, profession, imageName: String
+    let name, profession: String
+    let imageNames: [String]
     let age: Int
     
 }
@@ -17,16 +18,10 @@ struct User: ProducesCardViewModel {
 extension User {
     func toCardViewModel() -> CardViewModel{
         return CardViewModel(
-            imageName: imageName,
+            imageNames: imageNames,
             attributeText: getAttribute(),
             textAlignment: .left
         )
-    }
-    
-    var model: CardViewModel {
-        return CardViewModel(imageName: imageName,
-                             attributeText: getAttribute(),
-                             textAlignment: .left)
     }
     
     func getAttribute() -> NSAttributedString? {
@@ -37,7 +32,7 @@ extension User {
                 .font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
         
         attributeText.append(NSMutableAttributedString(
-            string: "\(age)",
+            string: " \(age)",
             attributes: [
                 .foregroundColor: UIColor.white,
                 .font: UIFont.systemFont(ofSize: 24, weight: .regular)]))

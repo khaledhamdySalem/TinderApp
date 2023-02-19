@@ -9,12 +9,21 @@ import UIKit
 
 class CardView: UIView {
     
-    var cardViewModel: CardViewModel? {
+    var cardViewModel: CardViewModel! {
         didSet {
-            guard let cardViewModel = cardViewModel else { return }
-            self.imageView.image = UIImage(named: cardViewModel.imageName)
+          
+            self.imageView.image = UIImage(named: cardViewModel.imageNames.first ?? "")
             self.informationLabel.attributedText = cardViewModel.attributeText
             self.informationLabel.textAlignment = cardViewModel.textAlignment
+          
+            for _ in 0..<cardViewModel.imageNames.count {
+                let barView = UIView()
+                barView.backgroundColor = barDeselectedColor
+                barStackView.addArrangedSubview(barView)
+            }
+            barStackView.arrangedSubviews.first?.backgroundColor = .white
+            
+            setupImageIndexObserver()
         }
     }
     
@@ -23,7 +32,7 @@ class CardView: UIView {
     private let gradientLayer = CAGradientLayer()
     
     // MARK: - Views
-    public let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
@@ -31,27 +40,33 @@ class CardView: UIView {
         return image
     }()
     
-    public let informationLabel: UILabel = {
+    private let informationLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     
+    private let barStackView = UIStackView()
+    
+    var imageIndex: Int = 0
+    let barDeselectedColor = UIColor.init(white: 0, alpha: 0.1)
     
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
-        addConstraints()
-        setGriadiantLayer()
-        informationLabel.translatesAutoresizingMaskIntoConstraints = false
-        informationLabel.numberOfLines = 2
-        informationLabel.textColor = .white
-        configureGesture()
+        configurePanGesture()
     }
     
     private func configureView() {
         translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(imageView, informationLabel)
+        addSubview(imageView)
+        setBarStackView()
+        setGriadiantLayer()
+        addSubview(informationLabel)
+        addConstraints()
+       
     }
     
     private func addConstraints() {
@@ -64,12 +79,39 @@ class CardView: UIView {
             informationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             informationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             informationLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+
+        ])
+    }
+     
+    // MARK: - Setup Image Index Observer
+    private func setupImageIndexObserver() {
+        self.cardViewModel.photoIndexObserver = { [weak self] imageIndex in
+            self?.imageView.image = UIImage(named: self?.cardViewModel?.imageNames[imageIndex] ?? "")
+            self?.barStackView.arrangedSubviews.forEach({return $0.backgroundColor = self?.barDeselectedColor})
+            self?.barStackView.arrangedSubviews[imageIndex].backgroundColor = .white
+        }
+    }
+    
+    // MARK: - Set Bar Stack View
+    private func setBarStackView() {
+        addSubview(barStackView)
+        barStackView.spacing = 2
+        barStackView.distribution = .fillEqually
+        barStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            barStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            barStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            barStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            barStackView.heightAnchor.constraint(equalToConstant: 4)
         ])
     }
     
-    private func configureGesture() {
+    private func configurePanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:  )))
         addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapNextOrPreviousPhoto(gesture: )))
+        addGestureRecognizer(tapGesture)
     }
     
     @objc private func handlePan(gesture: UIPanGestureRecognizer) {
@@ -91,18 +133,7 @@ class CardView: UIView {
                                            y: translation.y)
     }
     
-    private func setGriadiantLayer() {
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradientLayer.locations = [0.5, 1.1]
-        layer.addSublayer(gradientLayer)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = frame
-    }
-    
-    fileprivate func handleEnded(_ gesture: UIPanGestureRecognizer) {
+    private func handleEnded(_ gesture: UIPanGestureRecognizer) {
         let shouldDismissCard = abs(gesture.translation(in: nil).x) > threshold
         
         UIView.animate (withDuration: 0.75, delay: 0,
@@ -120,6 +151,28 @@ class CardView: UIView {
             self.transform = .identity
             self.removeFromSuperview()
         }
+    }
+    
+    @objc private func handleTapNextOrPreviousPhoto(gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: nil).x
+        let shouldAdvanceNextPhoto = location > (frame.width / 2) ? true: false
+        
+        if shouldAdvanceNextPhoto {
+            cardViewModel.goToNextPhoto()
+        } else {
+            cardViewModel.goToPreviousPhoto()
+        }
+    }
+    
+    private func setGriadiantLayer() {
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.5, 1]
+        layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = frame
     }
     
     required init?(coder: NSCoder) {

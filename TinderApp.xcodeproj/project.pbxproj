@@ -20,6 +20,7 @@
 		EAC5D06C29A216B2005320C5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */; };
 		EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */; };
 		EAC5D07229A22F5F005320C5 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07129A22F5F005320C5 /* Advertiser.swift */; };
+		EAC5D07529A27AA2005320C5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		EAC5D06B29A216B2005320C5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		EAC5D07129A22F5F005320C5 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				EAC5D06A29A216A6005320C5 /* Extension */,
 				EAC5D06229A0FB25005320C5 /* Supporting Files */,
 				EAC5D06329A0FB4D005320C5 /* Home */,
+				EAC5D07329A27A8A005320C5 /* Registration */,
 			);
 			path = TinderApp;
 			sourceTree = "<group>";
@@ -82,8 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				EAC5D05E29A0ED75005320C5 /* HomeTopStackView.swift */,
-				EAC5D05C29A0EB67005320C5 /* HomeBottomStackView.swift */,
 				EAC5D06529A10951005320C5 /* CardView.swift */,
+				EAC5D05C29A0EB67005320C5 /* HomeBottomStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +137,14 @@
 				EAC5D06F29A21CE7005320C5 /* CardViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EAC5D07329A27A8A005320C5 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				EAC5D07429A27AA2005320C5 /* RegistrationViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 				EAC5D04729A0DE72005320C5 /* AppDelegate.swift in Sources */,
 				EAC5D06C29A216B2005320C5 /* UIView+Extension.swift in Sources */,
 				EAC5D07029A21CE7005320C5 /* CardViewModel.swift in Sources */,
+				EAC5D07529A27AA2005320C5 /* RegistrationViewController.swift in Sources */,
 				EAC5D05F29A0ED75005320C5 /* HomeTopStackView.swift in Sources */,
 				EAC5D06929A21277005320C5 /* User.swift in Sources */,
 				EAC5D04929A0DE72005320C5 /* SceneDelegate.swift in Sources */,

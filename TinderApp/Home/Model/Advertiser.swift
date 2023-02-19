@@ -16,7 +16,7 @@ struct Advertiser: ProducesCardViewModel {
 extension Advertiser {
     func toCardViewModel() -> CardViewModel{
         return CardViewModel(
-            imageName: posterPhotoName,
+            imageNames: [posterPhotoName],
             attributeText: getAttribute(),
             textAlignment: .center
         )

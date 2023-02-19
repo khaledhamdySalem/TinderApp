@@ -15,11 +15,11 @@ class HomeView: UIView {
     
     var cardViewModels: [CardViewModel] = {
         let producer: [ProducesCardViewModel] =
-        [User(name: "Ahmed", profession: "IOS", imageName: "lady5c", age: 19),
-         User(name: "Ahmed", profession: "IOS", imageName: "lady4c", age: 19),
-         User(name: "Ahmed", profession: "IOS", imageName: "lady5c", age: 19),
-         User(name: "Ahmed", profession: "IOS", imageName: "lady4c", age: 19),
-         Advertiser(title: "Morad", brandName: "Hello to my fsculty", posterPhotoName: "slide_out_menu_poster")]
+        [
+            User(name: "Ahmed", profession: "IOS", imageNames: ["jane1", "jane2", "jane3"], age: 19),
+            User(name: "Ahmed", profession: "IOS", imageNames: ["kelly1", "kelly2", "kelly3"], age: 19),
+            Advertiser(title: "Morad", brandName: "Hello to my fsculty", posterPhotoName: "slide_out_menu_poster"),
+        ]
         
         let models = producer.map({$0.toCardViewModel()})
         return models
