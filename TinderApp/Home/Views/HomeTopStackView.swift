@@ -12,7 +12,7 @@ class HomeTopStackView: UIStackView {
     private let fireButton = UIImageView(image: #imageLiteral(resourceName: "fire"))
     private let messageButton = UIButton(type: .system)
     
-    private let settingButton: UIButton = {
+    private lazy var settingButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(didTapOnSettinButton), for: .touchUpInside)
         return button
