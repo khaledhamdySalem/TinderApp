@@ -17,6 +17,9 @@ final class RegistrationView: UIView {
     // MARK: - View Model
     var viewModel = RegistrationViewViewModel()
     
+    // MARK: - Properties
+    private let registerHUD = JGProgressHUD(style: .dark)
+    
     // MARK: - Views
      lazy var selectPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -68,6 +71,10 @@ final class RegistrationView: UIView {
         setupRegisterViewModelObserver()
     }
     
+    @objc private func handleSelectedPhoto() {
+        self.didSelectPhoto?()
+    }
+    
     private func setupRegisterViewModelObserver() {
         viewModel.isFormValidObserver.bind { [weak self] inValidForm in
             guard let inValidForm = inValidForm else { return }
@@ -76,6 +83,14 @@ final class RegistrationView: UIView {
                 self?.registrButton.backgroundColor = #colorLiteral(red: 0.8226264119, green: 0.09301393479, blue: 0.3175445795, alpha: 1)
             } else {
                 self?.registrButton.backgroundColor = #colorLiteral(red: 0.6627451181, green: 0.6627451181, blue: 0.6627451181, alpha: 1)
+            }
+        }
+        
+        viewModel.bindableIsRegitering.bind { [weak self] isRegistering in
+            if isRegistering == true {
+                self?.registerHUD.show(in: self!)
+            } else {
+                self?.registerHUD.dismiss(animated: true)
             }
         }
     }
@@ -109,6 +124,7 @@ final class RegistrationView: UIView {
     
     private func setupNotificationObservar() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDismisKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc private func handleKeyboard(notification: Notification) {
@@ -117,6 +133,12 @@ final class RegistrationView: UIView {
         let bottomSpace = frame.height - stackView.frame.origin.y - stackView.frame.height
         let differance: CGFloat = keyboardFrame.height - bottomSpace
         self.transform = CGAffineTransform(translationX: 0, y: -differance - 8)
+    }
+    
+    @objc private func handleDismisKeyboard(notification: Notification) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.transform = .identity
+        })
     }
     
     private func addTapGesture() {
@@ -129,6 +151,10 @@ final class RegistrationView: UIView {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1) {
             self.transform = .identity
         }
+    }
+    
+    private func handleTapDismiss() {
+        endEditing(true)
     }
     
     private func addConstraints() {
@@ -152,14 +178,6 @@ final class RegistrationView: UIView {
         ])
     }
     
-    private func showHUD(with error: Error) {
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Failed Registration"
-        hud.detailTextLabel.text = error.localizedDescription
-        hud.show(in: self)
-        hud.dismiss(afterDelay: 4)
-    }
-    
     private func setupGradiant() {
         let topColor = #colorLiteral(red: 0.983106792, green: 0.3619638085, blue: 0.3708369732, alpha: 1)
         let bottomColor = #colorLiteral(red: 0.8944732547, green: 0.1293645203, blue: 0.4480132461, alpha: 1)
@@ -180,25 +198,23 @@ final class RegistrationView: UIView {
 
 // MARK: - Set Actions
 extension RegistrationView {
-    
     @objc private func handleRegisterAction() {
-        endEditing(true)
-        
-        guard let email = emailTextFiled.text, let pass = passwordTextFiled.text else { return }
-        Auth.auth().createUser(withEmail: email, password: pass) { [weak self] res, error in
+        handleTapDismiss()
+        viewModel.performRegistration { [weak self] error in
             if let error = error {
                 self?.showHUD(with: error)
                 print(error)
             }
-            
-            if let res = res {
-                print(res.user.uid)
-            }
         }
     }
     
-    @objc private func handleSelectedPhoto() {
-        self.didSelectPhoto?()
+    private func showHUD(with error: Error) {
+        registerHUD.dismiss(animated: true)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Failed Registration"
+        hud.detailTextLabel.text = error.localizedDescription
+        hud.show(in: self)
+        hud.dismiss(afterDelay: 4)
     }
     
     func update(selectedPhoto: UIImage?) {
