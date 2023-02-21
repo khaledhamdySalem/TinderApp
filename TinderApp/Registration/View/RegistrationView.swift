@@ -11,11 +11,14 @@ import JGProgressHUD
 
 final class RegistrationView: UIView {
     
+    // MARK: - Clousre
+    var didSelectPhoto: (() -> ())?
+    
     // MARK: - View Model
     var viewModel = RegistrationViewViewModel()
     
     // MARK: - Views
-    private let selectPhotoButton: UIButton = {
+     lazy var selectPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Select Photo", for: .normal)
@@ -24,11 +27,18 @@ final class RegistrationView: UIView {
         button.backgroundColor = .white
         button.heightAnchor.constraint(equalToConstant: 250).isActive = true
         button.layer.cornerRadius = 20
+        button.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleSelectedPhoto), for: .touchUpInside)
         return button
     }()
+  
     lazy private var fullNameTextFiled = CustomTextField.createTextFiled(placeHolder: "Enter Your Full Name")
+    
     lazy private var emailTextFiled = CustomTextField.createTextFiled(placeHolder: "Enter Your Email Address")
+    
     lazy private var passwordTextFiled = CustomTextField.createTextFiled(placeHolder: "Enter Your Password")
+    
     var stackView = UIStackView()
     
     private lazy var registrButton: UIButton = {
@@ -42,7 +52,7 @@ final class RegistrationView: UIView {
         button.isEnabled = false
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleRegisterAction), for: .touchUpInside)
         return button
     }()
     
@@ -55,12 +65,12 @@ final class RegistrationView: UIView {
         configureView()
         addConstraints()
         configureTextFiled()
-        
         setupRegisterViewModelObserver()
     }
     
     private func setupRegisterViewModelObserver() {
-        viewModel.isFormValidObserver = { [weak self] inValidForm in
+        viewModel.isFormValidObserver.bind { [weak self] inValidForm in
+            guard let inValidForm = inValidForm else { return }
             self?.registrButton.isEnabled = inValidForm
             if inValidForm {
                 self?.registrButton.backgroundColor = #colorLiteral(red: 0.8226264119, green: 0.09301393479, blue: 0.3175445795, alpha: 1)
@@ -108,7 +118,7 @@ final class RegistrationView: UIView {
         let differance: CGFloat = keyboardFrame.height - bottomSpace
         self.transform = CGAffineTransform(translationX: 0, y: -differance - 8)
     }
-
+    
     private func addTapGesture() {
         let tapGeustre = UITapGestureRecognizer(target: self, action: #selector(handleDismissKeyboard(gesture:)))
         addGestureRecognizer(tapGeustre)
@@ -142,23 +152,6 @@ final class RegistrationView: UIView {
         ])
     }
     
-    // MARK: - Set Actions
-    @objc private func handleRegister() {
-        endEditing(true)
-
-        guard let email = emailTextFiled.text, let pass = passwordTextFiled.text else { return }
-        Auth.auth().createUser(withEmail: email, password: pass) { [weak self] res, error in
-            if let error = error {
-                self?.showHUD(with: error)
-                print(error)
-            }
-            
-            if let res = res {
-                print(res.user.uid)
-            }
-        }
-    }
-    
     private func showHUD(with error: Error) {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Failed Registration"
@@ -183,5 +176,32 @@ final class RegistrationView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Set Actions
+extension RegistrationView {
     
+    @objc private func handleRegisterAction() {
+        endEditing(true)
+        
+        guard let email = emailTextFiled.text, let pass = passwordTextFiled.text else { return }
+        Auth.auth().createUser(withEmail: email, password: pass) { [weak self] res, error in
+            if let error = error {
+                self?.showHUD(with: error)
+                print(error)
+            }
+            
+            if let res = res {
+                print(res.user.uid)
+            }
+        }
+    }
+    
+    @objc private func handleSelectedPhoto() {
+        self.didSelectPhoto?()
+    }
+    
+    func update(selectedPhoto: UIImage?) {
+        self.selectPhotoButton.setImage(selectedPhoto?.withRenderingMode(.alwaysOriginal), for: .normal)
+    }
 }

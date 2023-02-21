@@ -38,12 +38,15 @@ final class CustomTextField: UITextField {
     public static func createTextFiled(placeHolder: String) -> CustomTextField {
         let textFiled = CustomTextField(padding: 16, height: 16)
         textFiled.translatesAutoresizingMaskIntoConstraints = false
-        textFiled.placeholder = placeHolder
         textFiled.layer.cornerRadius = 20
         textFiled.backgroundColor = .white
         textFiled.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        textFiled.textColor = .black
+        textFiled.attributedPlaceholder = NSAttributedString(
+            string: placeHolder,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
         return textFiled
     }
-
 }
 

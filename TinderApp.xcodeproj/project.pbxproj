@@ -114,8 +114,8 @@
 		EAC5D04529A0DE72005320C5 /* TinderApp */ = {
 			isa = PBXGroup;
 			children = (
-				EAA1AD2D29A3F1B900144D64 /* Bindable */,
 				EAC5D05429A0DE74005320C5 /* Info.plist */,
+				EAA1AD2D29A3F1B900144D64 /* Bindable */,
 				EAC5D06A29A216A6005320C5 /* Extension */,
 				EAC5D06229A0FB25005320C5 /* Supporting Files */,
 				EAC5D06329A0FB4D005320C5 /* Home */,

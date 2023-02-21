@@ -5,14 +5,14 @@
 //  Created by KH on 19/02/2023.
 //
 
-import Foundation
+import UIKit
 
 final class RegistrationViewViewModel {
     
-    // MARK: -
-    var isFormValidObserver: ((Bool) -> Void)?
+    // MARK: - CallBack
+    var isFormValidObserver = Bindable<Bool>()
     
-    // MARK: -
+    // MARK: - Properties
     var fullName: String? {
         didSet {
             checkFormValidity()
@@ -29,9 +29,12 @@ final class RegistrationViewViewModel {
         }
     }
     
+    var binableImage = Bindable<UIImage>()
+    
     // MARK: - Check For Validity
     private func checkFormValidity() {
         let isValidForm = fullName?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false
-        isFormValidObserver?(isValidForm)
+//        isFormValidObserver?(isValidForm)
+        isFormValidObserver.value = isValidForm
     }
 }
